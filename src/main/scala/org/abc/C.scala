@@ -5,6 +5,9 @@ case class C(n: Int) extends Ordered[C] {
 }
 
 object C {
+
+  implicit val ord = Ordering.by[(C, Boolean), C](_._1)
+
   /**
    * Fails to compile when this class is lexicographically greater than [[B]].
    */
