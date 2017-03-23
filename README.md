@@ -1,5 +1,5 @@
 # scalac-bug
-Minimal repro of a scalac bug I ran into.
+Minimal repro of [SI-10222](https://issues.scala-lang.org/browse/SI-10222).
 
 Three relevant `git` branches:
 
