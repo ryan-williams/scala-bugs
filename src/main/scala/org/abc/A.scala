@@ -1,7 +1,5 @@
 package org.abc
 
-import java.io.InputStream
-
 trait I
 
 trait A
@@ -13,7 +11,7 @@ object A {
 
   def apply(): A = ???
 
-  implicit class InputStreamA(i: I)
+  implicit class ItoA(i: I)
     extends A {
     override protected def foo(): Unit = ???
   }
