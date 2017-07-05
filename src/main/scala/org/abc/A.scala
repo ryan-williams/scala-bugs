@@ -7,13 +7,13 @@ trait A
 
   override def read(): Int = 0
 
-  protected def _read(s: String): Unit
+  protected def foo(s: String): Unit
 }
 
 object A {
   implicit class InputStreamA(is: InputStream)
     extends A {
 
-    override protected def _read(s: String): Unit = ???
+    override protected def foo(s: String): Unit = ???
   }
 }

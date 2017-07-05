@@ -6,6 +6,6 @@ import org.abc.CachingChannel.makeCachingChannel
 
 object MockChannel {
   val path = Paths.get("abc")
-  val ch = SeekableA(path)
-  ch._read("abc")
+  val ch = B(path)
+  ch.foo("abc")
 }
