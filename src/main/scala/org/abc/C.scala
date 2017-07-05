@@ -2,7 +2,7 @@ package org.abc
 
 case class C(b: B)
   extends B {
-  override protected def foo(s: String): Unit = ???
+  override protected def foo(): Unit = ???
 }
 
 object C {

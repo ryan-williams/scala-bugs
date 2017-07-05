@@ -6,12 +6,12 @@ trait I
 
 trait A
   extends I {
-  protected def foo(s: String): Unit
+  protected def foo(): Unit
 }
 
 object A {
   implicit class InputStreamA(i: I)
     extends A {
-    override protected def foo(s: String): Unit = ???
+    override protected def foo(): Unit = ???
   }
 }

@@ -4,5 +4,5 @@ import org.abc.C.makeCachingChannel
 
 object D {
   val ch = B("zzz")
-  ch.foo("abc")
+  ch.foo()
 }
