@@ -1,11 +1,11 @@
 package org.abc
 
-case class CachingChannel(channel: B)
+case class C(b: B)
   extends B {
   override protected def foo(s: String): Unit = ???
 }
 
-object CachingChannel {
+object C {
 
   case class Config(n: Int = 0)
 
@@ -13,8 +13,8 @@ object CachingChannel {
     implicit val default = Config()
   }
 
-  implicit def makeCachingChannel(channel: B)(
+  implicit def makeCachingChannel(b: B)(
       implicit config: Config
-  ): CachingChannel =
-    CachingChannel(channel)
+  ): C =
+    C(b)
 }
