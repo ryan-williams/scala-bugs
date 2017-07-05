@@ -1,6 +1,3 @@
-# scalac-bug
-Minimal repro of a scalac bug I ran into.
-
 See [A.scala](src/main/scala/org/abc/A.scala) or [this scastie](https://scastie.scala-lang.org/ryan-williams/gdJxMYE2Qr2vxkeeOY7ECg):
 
 ```scala
