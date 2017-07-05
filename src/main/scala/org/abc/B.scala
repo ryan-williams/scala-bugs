@@ -6,6 +6,6 @@ trait B
   extends A
 
 object B {
-  def apply(path: Path): B = ???
+  def apply(s: String): B = ???
 }
 
