@@ -3,7 +3,7 @@ Minimal repro of [SI-10222](https://issues.scala-lang.org/browse/SI-10222).
 
 Three relevant `git` branches:
 
-![](https://d3vv6lp55qjaqc.cloudfront.net/items/1P0d2b120K203K1i2Y20/Screen%20Shot%202017-03-08%20at%209.59.13%20PM.png)
+![](https://d3vv6lp55qjaqc.cloudfront.net/items/351r0A3B1R0H2e2e1P2X/Screen%20Shot%202017-07-05%20at%201.11.05%20PM.png)
 
 ## Steps:
 
@@ -36,7 +36,7 @@ $ rm -rf org  # clean up generated .class files
 ```bash
 $ git checkout spoil
 $ sbt clean compile    # succeeds, correctly
-$ git checkout master
+$ git checkout 10222
 $ sbt compile          # succeeds, (erroneously?)
 $ sbt clean compile    # fails, (correctly?)
 ```
