@@ -1,8 +1,6 @@
 package org.abc
 
-import org.abc.C.makeCachingChannel
-
 object D {
-  val ch = B("zzz")
-  ch.foo()
+  import org.abc.C.makeCachingChannel
+  A().foo()
 }

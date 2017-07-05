@@ -1,20 +1,17 @@
 package org.abc
 
-case class C(b: B)
-  extends B {
+class C
+  extends A {
   override protected def foo(): Unit = ???
 }
 
 object C {
 
-  case class Config(n: Int = 0)
+  case class Config(n: Int)
 
   object Config {
-    implicit val default = Config()
+    implicit val default = Config(0)
   }
 
-  implicit def makeCachingChannel(b: B)(
-      implicit config: Config
-  ): C =
-    C(b)
+  implicit def makeCachingChannel(a: A)(implicit config: Config): C = ???
 }

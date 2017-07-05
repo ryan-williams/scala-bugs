@@ -10,6 +10,9 @@ trait A
 }
 
 object A {
+
+  def apply(): A = ???
+
   implicit class InputStreamA(i: I)
     extends A {
     override protected def foo(): Unit = ???
