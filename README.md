@@ -1,3 +1,5 @@
+# [scala/bug#10401](https://github.com/scala/bug/issues/10401)
+
 See [A.scala](src/main/scala/org/abc/A.scala) or [this scastie](https://scastie.scala-lang.org/ryan-williams/gdJxMYE2Qr2vxkeeOY7ECg):
 
 ```scala
