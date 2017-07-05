@@ -8,15 +8,11 @@ object A {
   def apply(): A = ???
 }
 
-trait B
-  extends A
+trait B extends A
 
 object B {
-
   class Config
-
   implicit val default = new Config
-
   implicit def AtoB(a: A)(implicit config: Config): B = ???
 }
 
