@@ -2,7 +2,7 @@ package org.abc
 
 import java.io.InputStream
 
-trait ByteChannel
+trait A
   extends InputStream {
 
   override def read(): Int = 0
@@ -10,9 +10,9 @@ trait ByteChannel
   protected def _read(s: String): Unit
 }
 
-object ByteChannel {
-  implicit class InputStreamByteChannel(is: InputStream)
-    extends ByteChannel {
+object A {
+  implicit class InputStreamA(is: InputStream)
+    extends A {
 
     override protected def _read(s: String): Unit = ???
   }

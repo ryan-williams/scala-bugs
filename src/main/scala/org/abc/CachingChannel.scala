@@ -2,8 +2,8 @@ package org.abc
 
 import java.nio.ByteBuffer
 
-case class CachingChannel(channel: SeekableByteChannel)
-  extends SeekableByteChannel {
+case class CachingChannel(channel: SeekableA)
+  extends SeekableA {
   override protected def _read(dst: ByteBuffer): Unit = ???
 }
 
@@ -15,7 +15,7 @@ object CachingChannel {
     implicit val default = Config()
   }
 
-  implicit def makeCachingChannel(channel: SeekableByteChannel)(
+  implicit def makeCachingChannel(channel: SeekableA)(
       implicit config: Config
   ): CachingChannel =
     CachingChannel(channel)
