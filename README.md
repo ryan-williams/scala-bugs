@@ -53,3 +53,5 @@ sbt run  # Fails!
 ```
 
 SBT succeeds if the `List` member in `B` (and corresponding instantiation argument in `Serde.main`) is changed to an `Array`, `Vector`, or `ArrayBuffer`; the `List.SerializationProxy` is triggering the issue somehow.
+
+The issue shows up in SBT {0.13.13, 0.13.16, 1.0.1} x Scala {2.11.11, 2.12.3}.
