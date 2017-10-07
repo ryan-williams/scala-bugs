@@ -14,3 +14,12 @@ c
 ```
 
 So far so good!
+
+### After
+
+- add a method `extra` to `C`
+- publish a new C: `sbt +c/publishM2`
+- add a call of `C.extra` in `A`
+- run `A` again:
+	- `sbt ++2.11.11 a/run` throws an `AbstractMethodError: a.A$.extra()V`
+	- `sbt ++2.12.3 a/run` runs fine as before
