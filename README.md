@@ -1,5 +1,16 @@
-# scalac-bug
-Minimal repro of scala bugs I run into:
+## `AbstractMethodError` with conflicting versions of a `trait`
 
-- [branch 10222](https://github.com/ryan-williams/scalac-bug/tree/10222): [scala/bug#10222](https://github.com/scala/bug/issues/10222)
-- [branch 10401](https://github.com/ryan-williams/scalac-bug/tree/10401): [scala/bug#10401](https://github.com/scala/bug/issues/10401)
+### Before
+
+```bash
+sbt +c/publishM2 +b/publishM2 +a/run
+```
+
+Each of Scala 2.11.11 and 2.12.3 print:
+
+```bash
+b
+c
+```
+
+So far so good!
