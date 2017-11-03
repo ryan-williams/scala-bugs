@@ -10,26 +10,26 @@ Module `a` has `test->test` dependencies on `b` and `c`, but `a/publishM2` resul
  ### Repro:
  
  ```bash
- $ sbt ++2.12.4 a/makePom
- $ cat a/target/scala-2.12/a_2.12-0.1-SNAPSHOT.pom
- …
+$ sbt a/makePom
+$ cat a/target/scala-2.12/a_2.12-0.1-SNAPSHOT.pom
+…
     <dependencies>
-		 <dependency>
-             <groupId>org.scala-lang</groupId>
-             <artifactId>scala-library</artifactId>
-             <version>2.12.4</version>
-         </dependency>
-         <dependency>
-             <groupId>b</groupId>
-             <artifactId>b_2.12</artifactId>
-             <version>0.1-SNAPSHOT</version>
-         </dependency>
-         <dependency>
-             <groupId>c</groupId>
-             <artifactId>c_2.12</artifactId>
-             <version>0.1-SNAPSHOT</version>
-             <scope>test</scope>
-         </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.12.4</version>
+        </dependency>
+        <dependency>
+            <groupId>b</groupId>
+            <artifactId>b_2.12</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>c</groupId>
+            <artifactId>c_2.12</artifactId>
+            <version>0.1-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 ```
 
