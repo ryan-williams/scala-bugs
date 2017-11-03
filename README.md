@@ -10,8 +10,8 @@ Module `a` has `test->test` dependencies on `b` and `c`, but `a/publishM2` resul
  ### Repro:
  
  ```bash
- sbt ++2.12.4 a/makePom
- cat a/target/scala-2.12/a_2.12-0.1-SNAPSHOT.pom
+ $ sbt ++2.12.4 a/makePom
+ $ cat a/target/scala-2.12/a_2.12-0.1-SNAPSHOT.pom
  …
     <dependencies>
 		 <dependency>
