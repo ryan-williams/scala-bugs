@@ -39,27 +39,27 @@ Adding this block to your SBT config hackily works around this issue:
 
 ```scala
 projectDependencies := projectDependencies.value.flatMap {
-dep ⇒
-  val configurations = dep.configurations.toSeq.flatMap(_.split(";"))
-  val (testConfs, otherConfs) = configurations.partition(_ == "test->test")
-  val testConf = testConfs.headOption
-  if (testConf.isDefined)
-    Seq(
-      dep.copy(
-        configurations =
-          if (otherConfs.nonEmpty)
-            Some(otherConfs.mkString(";"))
-          else
-            None
-      ),
-      dep
-        .copy(
-          configurations = Some("test->test")
-        )
-        .classifier("tests")
-    )
-  else
-	Seq(dep)
+  dep ⇒
+    val configurations = dep.configurations.toSeq.flatMap(_.split(";"))
+    val (testConfs, otherConfs) = configurations.partition(_ == "test->test")
+    val testConf = testConfs.headOption
+    if (testConf.isDefined)
+      Seq(
+        dep.copy(
+          configurations =
+            if (otherConfs.nonEmpty)
+              Some(otherConfs.mkString(";"))
+            else
+              None
+        ),
+        dep
+          .copy(
+            configurations = Some("test->test")
+          )
+          .classifier("tests")
+      )
+    else
+      Seq(dep)
 }
 ```
 
