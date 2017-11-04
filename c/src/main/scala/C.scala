@@ -1,5 +1,4 @@
-
-@a.AddImplicit
+@AddImplicit
 trait C1 {}
 
 object C2 extends C1 {

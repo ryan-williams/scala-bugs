@@ -1,5 +1,3 @@
-package b
-
 import B3._
 
 object B4 {

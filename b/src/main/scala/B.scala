@@ -1,6 +1,4 @@
-package b
-
-@a.AddImplicit
+@AddImplicit
 trait B1 {}
 
 object B2 extends B1 {
