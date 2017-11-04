@@ -1,8 +1,13 @@
-# scalac-bug
-Minimal repros of scala bugs I've run into:
+## scalameta macro annotation example
 
-- [branch 10222](https://github.com/ryan-williams/scalac-bug/tree/10222): [scala/bug#10222](https://github.com/scala/bug/issues/10222)
-- [branch 10401](https://github.com/ryan-williams/scalac-bug/tree/10401): [scala/bug#10401](https://github.com/scala/bug/issues/10401)
-- [branch `trait`](https://github.com/ryan-williams/scalac-bug/tree/trait): [discussed on #9689](https://github.com/scala/bug/issues/9689#issuecomment-334975302)
-- [branch `serde`](https://github.com/ryan-williams/scalac-bug/tree/serde): [discussed on #2824](https://github.com/sbt/sbt/issues/2824#issuecomment-327941556)
-- [branch `dependsOn`](https://github.com/ryan-williams/scala-bugs/tree/dependsOn): `test->test` project-dependencies don't translate into `-tests`-dependency in POM ([sbt/sbt#3709](https://github.com/sbt/sbt/issues/3709))
+- [build.sbt](build.sbt) and [a/src/main/scala/Main.scala](a/src/main/scala/Main.scala) contain the example code from [http://scalameta.org/paradise/#HelloWorld](http://scalameta.org/paradise/#HelloWorld)
+- [b/src/main/scala/B.scala](b/src/main/scala/B.scala) attempts to use the macro defined in [a/src/main/scala/Main.scala](a/src/main/scala/Main.scala) 
+
+```bash
+sbt a/publishM2
+sbt b/compile
+…
+[error] /…/b/src/main/scala/B.scala:2:8: macro annotation could not be expanded (the most common reason for that is that you need to enable the macro paradise plugin; another possibility is that you try to use macro annotation in the same compilation run that defines it)
+[error] object B {
+[error]        ^
+```
