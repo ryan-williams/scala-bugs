@@ -10,7 +10,7 @@ lazy val a = project.settings(
 )
 
 lazy val b = project.settings(
+  libraryDependencies += "org.scalameta" %% "scalameta" % "1.8.0" % Provided,
   macroAnnotationSettings,
-  resolvers += Resolver.mavenLocal,
-  libraryDependencies += "a" %% "a" % "0.1-SNAPSHOT"
-)
+  resolvers += Resolver.mavenLocal
+) dependsOn a
