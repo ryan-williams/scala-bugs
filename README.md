@@ -1,8 +1,13 @@
-# scalac-bug
-Minimal repros of scala bugs I've run into:
+## `provided` dependencies not on `run` classpath
 
-- [branch 10222](https://github.com/ryan-williams/scalac-bug/tree/10222): [scala/bug#10222](https://github.com/scala/bug/issues/10222)
-- [branch 10401](https://github.com/ryan-williams/scalac-bug/tree/10401): [scala/bug#10401](https://github.com/scala/bug/issues/10401)
-- [branch `trait`](https://github.com/ryan-williams/scalac-bug/tree/trait): [discussed on #9689](https://github.com/scala/bug/issues/9689#issuecomment-334975302)
-- [branch `serde`](https://github.com/ryan-williams/scalac-bug/tree/serde): [discussed on #2824](https://github.com/sbt/sbt/issues/2824#issuecomment-327941556)
-- [branch `dependsOn`](https://github.com/ryan-williams/scala-bugs/tree/dependsOn): `test->test` project-dependencies don't translate into `-tests`-dependency in POM ([sbt/sbt#3709](https://github.com/sbt/sbt/issues/3709))
+```bash
+sbt test     # spark-core is on classpath
+sbt console  # spark-core is on classpath
+scala> new org.apache.spark.SparkConf  # succeeds
+
+sbt run      # fails: spark-core is not on classpath
+```
+
+The classpath for the `run` command should include `provided` dependencies.
+
+[This StackOverflow is related](https://stackoverflow.com/questions/18838944/how-to-add-provided-dependencies-back-to-run-test-tasks-classpath/28200761#28200761).
