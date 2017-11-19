@@ -1,8 +1,21 @@
-# scalac-bug
-Minimal repros of scala bugs I've run into:
+## Scalameta-macro / scoverage source root issue
 
-- [branch 10222](https://github.com/ryan-williams/scalac-bug/tree/10222): [scala/bug#10222](https://github.com/scala/bug/issues/10222)
-- [branch 10401](https://github.com/ryan-williams/scalac-bug/tree/10401): [scala/bug#10401](https://github.com/scala/bug/issues/10401)
-- [branch `trait`](https://github.com/ryan-williams/scalac-bug/tree/trait): [discussed on #9689](https://github.com/scala/bug/issues/9689#issuecomment-334975302)
-- [branch `serde`](https://github.com/ryan-williams/scalac-bug/tree/serde): [discussed on #2824](https://github.com/sbt/sbt/issues/2824#issuecomment-327941556)
-- [branch `dependsOn`](https://github.com/ryan-williams/scala-bugs/tree/dependsOn): `test->test` project-dependencies don't translate into `-tests`-dependency in POM ([sbt/sbt#3709](https://github.com/sbt/sbt/issues/3709))
+```bash
+sbt clean coverage test coverageReport
+…
+[info] All tests passed.
+[success] Total time: 12 s, completed Nov 19, 2017 8:20:02 PM
+[info] Waiting for measurement data to sync...
+[info] Reading scoverage instrumentation [/Users/ryan/c/scalac-bug/target/scala-2.11/scoverage-data/scoverage.coverage.xml]
+[info] Reading scoverage measurements...
+[info] Generating scoverage reports...
+java.lang.RuntimeException: No source root found for '/Users/ryan/c/scalac-bug/<macro>' (source roots: '/Users/ryan/c/scalac-bug/src/main/scala/')
+	at scoverage.report.BaseReportWriter.relativeSource(BaseReportWriter.scala:28)
+	at scoverage.report.BaseReportWriter.relativeSource(BaseReportWriter.scala:16)
+	at scoverage.report.CoberturaXmlWriter.klass(CoberturaXmlWriter.scala:42)
+	at scoverage.report.CoberturaXmlWriter$$anonfun$pack$1.apply(CoberturaXmlWriter.scala:66)
+	at scoverage.report.CoberturaXmlWriter$$anonfun$pack$1.apply(CoberturaXmlWriter.scala:66)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+	at scala.collection.immutable.List.foreach(List.scala:318)
+```
