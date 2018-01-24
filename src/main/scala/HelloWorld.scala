@@ -1,10 +1,7 @@
-import scala.scalajs.js.annotation.JSExportTopLevel
-
-@JSExportTopLevel("HelloWorld")
 object HelloWorld {
   println("yay")
   println(this)
-  def hello(): Unit = {
+  def main(args: Array[String]): Unit = {
     println("hello")
   }
 }
