@@ -1,6 +1,6 @@
-
 object Test {
-  import shapeless._, labelled.FieldType
+  import shapeless._
+  import labelled.FieldType
 
   trait LL[T]  // typeclass with Lazy LabelledGeneric derivations
   implicit val hnilLL: LL[HNil] = ???
