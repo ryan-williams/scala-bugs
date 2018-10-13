@@ -1,5 +1,5 @@
 import magnolia._
-import org.hammerlab.{ test ⇒ t }
+import org.hammerlab.test.Cmp
 
 import scala.language.experimental.macros
 
@@ -15,6 +15,6 @@ case class A(value: Int)
 case class B(ints: Array[A])
 
 object Test {
-  implicit def array[T](implicit cmp: t.Cmp[T]): TC[Array[T]] = ???
+  implicit def array[T](implicit cmp: Cmp[T]): TC[Array[T]] = ???
   TC.gen[B]  // 🚫: inst$macro$6  is already defined as value inst$macro$6
 }
