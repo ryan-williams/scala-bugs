@@ -6,3 +6,4 @@ Minimal repros of scala bugs I've run into:
 - [branch `trait`](https://github.com/ryan-williams/scalac-bug/tree/trait): [discussed on #9689](https://github.com/scala/bug/issues/9689#issuecomment-334975302)
 - [branch `serde`](https://github.com/ryan-williams/scalac-bug/tree/serde): [discussed on #2824](https://github.com/sbt/sbt/issues/2824#issuecomment-327941556)
 - [branch `dependsOn`](https://github.com/ryan-williams/scala-bugs/tree/dependsOn): `test->test` project-dependencies don't translate into `-tests`-dependency in POM ([sbt/sbt#3709](https://github.com/sbt/sbt/issues/3709))
+- [branch `scalatest-stack`](https://github.com/ryan-williams/scala-bugs/tree/scalatest-stack): Scalatest doesn't show the full stack trace in JS ([scalatest#1575](https://github.com/scalatest/scalatest/issues/1575))
