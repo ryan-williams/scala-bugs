@@ -1,4 +1,4 @@
-import shapeless.{ the, Lazy }
+import shapeless.{ Lazy, the }
 
 trait CC  // stand-in for a case-class that we with to derive a typeclass instance `TC` for
 trait L   // stand-in for a generic HList Repr of the case-class `CC`
@@ -24,6 +24,7 @@ object derive {
 }
 
 object test {
+
   {
     import derive.eager_
     the[TC    [CC   ]]  // ✅
@@ -33,12 +34,24 @@ object test {
   {
     import derive.lazy_
     the[TC    [CC   ]]                   // ✅
-    the[TC.Aux[CC, O]]                   // 🚫
+    //the[TC.Aux[CC, O]]                   // 🚫: Lazy breaks the derivation's awareness of the "output" type, for some reason
 
     // Further checks:
     the[TC    [CC     ]]: TC.Aux[CC, O]  // ✅
     the[TC    [CC     ]](lazy_)          // ✅
-    the[TC.Aux[CC, O]](lazy_)            // 🚫
+    //the[TC.Aux[CC, O]](lazy_)            // 🚫: "error: polymorphic expression cannot be instantiated to expected type; "
     the[TC.Aux[CC, O]](lazy_[CC])        // ✅
   }
+}
+
+object console {
+  import shapeless._
+  { import derive.eager_; the[TC    [CC   ]]                }  // ✅: res0: TC.Aux[CC,TC.base.Out] = null
+  { import derive.eager_; the[TC.Aux[CC, O]]                }  // ✅: res1: TC.Aux[CC,TC.base.Out] = null
+  { import derive.lazy_ ; the[TC    [CC   ]]                }  // ✅: res2: TC[CC]{type Out = O} = null
+  { import derive.lazy_ ; the[TC    [CC   ]]: TC.Aux[CC, O] }  // ✅: res3: TC.Aux[CC,O] = null
+  { import derive.lazy_ ; the[TC.Aux[CC, O]]                }  // 🚫
+  // <console>:15: error: could not find implicit value for parameter t: TC.Aux[CC,O]
+  //   { import derive.lazy_ ; the[TC.Aux[CC, O]]           }  // 🚫
+  //                              ^
 }
